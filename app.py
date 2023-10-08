@@ -6,6 +6,10 @@ app.config['SECRET_KEY'] = os.urandom(64)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 
+@app.route("/")
+def home():
+    return render_template("home.html")
+
 @app.route("/response", methods=["GET"])
 def response():
     return ["hello"]
