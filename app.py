@@ -1,3 +1,4 @@
+from flask import Flask, jsonify
 from base64 import encodebytes
 from PIL import Image
 
