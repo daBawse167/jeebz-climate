@@ -19,8 +19,8 @@ def home(country="China", feature="population"):
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
 
-    #plt.plot(country_data["year"], country_data[feature])
-    #plt.savefig("graph.png")
+    plt.plot(country_data["year"], country_data[feature])
+    plt.savefig("graph.png")
 
     pil_img = Image.open("graph.png", mode="r")
     byte_arr = io.BytesIO()
