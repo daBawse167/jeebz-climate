@@ -4,7 +4,6 @@ from PIL import Image
 import io
 import os
 import numpy as np
-import plotly as px
 import pandas as pd
 import matplotlib.pyplot as plt
 
