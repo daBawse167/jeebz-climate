@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_file
 from base64 import encodebytes
 from PIL import Image
 
@@ -21,15 +21,8 @@ def home(country="China", feature="population"):
 
     plt.plot(country_data["year"], country_data[feature])
     plt.savefig("graph.png")
-
-    pil_img = Image.open("graph.png", mode="r")
-    byte_arr = io.BytesIO()
-    pil_img.save(byte_arr, format="PNG")
-    encoded_image = encodebytes(byte_arr.getvalue()).decode("ascii")
-
-    response = { 'Status' : 'Success', 'message': 'message', 'ImageBytes': encoded_image}
-    print(response)
-    return jsonify(response)
+    
+    return send_file("graph.png", mimetype='image/png')
 
 if __name__=="__main__":
     app.run(debug=True)
