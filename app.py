@@ -7,6 +7,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 app = Flask(__name__)
 
@@ -18,9 +19,15 @@ app.config['SESSION_FILE_DIR'] = './.flask_session/'
 def home(country="China", feature="population"):
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
-
-    plt.plot(country_data["year"], country_data[feature])
-    plt.savefig("graph.png")
+    
+    fig = go.Figure(
+        go.Scatter(
+            x=country_data["year"], 
+            y=country_data[feature]
+        )
+    )
+    fig.update_layout(title=feature+" in " + country, xaxis_title="year", yaxis_title=feature)
+    fig.write_image("graph.png", format="png", engine="kaleido")
     
     return send_file("graph.png", mimetype='image/png')
 
