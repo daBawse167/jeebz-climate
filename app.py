@@ -15,8 +15,8 @@ app.config['SECRET_KEY'] = os.urandom(64)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 
-@app.route("/response", methods=["GET", "POST"])
-def home(country="China", feature="population"):
+@app.route("/response/<string:country>", methods=["GET", "POST"])
+def home(country, feature="population"):
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
     
