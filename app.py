@@ -16,7 +16,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 
 @app.route("/response", methods=["GET", "POST"])
-def home(country="", feature=""):
+def home(country="China", feature="population"):
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
     
