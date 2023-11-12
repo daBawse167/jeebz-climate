@@ -16,7 +16,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SESSION_FILE_DIR'] = './.flask_session/'
 
 @app.route("/response", methods=["GET", "POST"])
-def home(country, feature):
+def home():
     country = request.args.get("country", None)
     feature = request.args.get("feature", None)
     
