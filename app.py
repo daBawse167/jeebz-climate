@@ -23,12 +23,14 @@ def home():
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
     
-    plt.plot(country_data["year"], country_data[feature])
-    plt.xlabel("year")
-    plt.ylabel(feature)
-    plt.title(feature+" in "+country)
-    
-    plt.savefig("graph.png")
+    fig = go.Figure(
+        go.Scatter(
+            x=country_data["year"], 
+            y=country_data[feature]
+        )
+    )
+    fig.update_layout(title=feature+" in " + country, xaxis_title="year", yaxis_title=feature)
+    fig.write_image("graph.png", format="png", engine="kaleido")
     
     return send_file("graph.png", mimetype='image/png')
 
