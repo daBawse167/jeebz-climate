@@ -23,10 +23,14 @@ def home():
     df = pd.read_csv("World Energy Consumption.csv")
     country_data = df[df["country"] == country]
     
+    feature_column = country_data[feature].dropna()
+    idx = feature_column.index
+    year_column = country_data["year"][idx]
+    
     fig = go.Figure(
         go.Scatter(
-            x=country_data["year"], 
-            y=country_data[feature]
+            x=year_column,
+            y=feature_column
         )
     )
     fig.update_layout(title=feature+" in " + country, xaxis_title="year", yaxis_title=feature)
