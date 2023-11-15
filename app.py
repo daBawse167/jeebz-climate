@@ -20,7 +20,7 @@ def home():
     country = request.args.get("country", None)
     feature = request.args.get("feature", None)
     
-    df = pd.read_csv("World Energy Consumption.csv")
+    df = pd.read_csv("world_energy.csv")
     country_data = df[df["country"] == country]
     
     feature_column = country_data[feature].dropna()
