@@ -25,7 +25,7 @@ def home():
     
     feature_column = country_data[feature].dropna()
     idx = feature_column.index
-    year_column = country_data["year"][idx]
+    year_column = country_data["Year"][idx]
     
     fig = go.Figure(
         go.Scatter(
