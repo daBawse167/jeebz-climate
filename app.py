@@ -20,8 +20,8 @@ def home():
     country = request.args.get("country", None)
     feature = request.args.get("feature", None)
     
-    df = pd.read_csv("world_energy.csv")
-    country_data = df[df["country"] == country]
+    country_data = pd.read_csv("https://raw.githubusercontent.com/daBawse167/jeebz-climate-data/main/"+country+"%20data.csv").drop([
+    'Unnamed: 0'], axis=1)
     
     feature_column = country_data[feature].dropna()
     idx = feature_column.index
