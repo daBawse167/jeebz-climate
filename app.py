@@ -20,7 +20,7 @@ def home():
     country = request.args.get("country", None)
     feature = request.args.get("feature", None)
     
-    country_data = pd.read_csv("https://raw.githubusercontent.com/daBawse167/jeebz-climate-data/main/"+country+"%20data.csv").drop([
+    country_data = pd.read_csv(r"https://raw.githubusercontent.com/daBawse167/jeebz-climate-data/main/"+country+"%20data.csv").drop([
     'Unnamed: 0'], axis=1)
     
     feature_column = country_data[feature].dropna()
