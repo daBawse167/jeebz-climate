@@ -37,7 +37,7 @@ def home():
     fig.write_image("graph.png", format="png", engine="kaleido")
     
     return send_file("graph.png", mimetype='image/png')"""
-    return jsonify({"feature":feature_column, "years":year_column}, mimetype="application/json")
+    return jsonify(feature=feature_column, years=year_column)
 
 if __name__=="__main__":
     app.run(debug=True)
