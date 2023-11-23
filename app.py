@@ -27,7 +27,7 @@ def home():
     idx = feature_column.index
     year_column = country_data["Year"][idx]
     
-    fig = go.Figure(
+    """fig = go.Figure(
         go.Scatter(
             x=year_column,
             y=feature_column
@@ -36,7 +36,8 @@ def home():
     fig.update_layout(title=feature+" in " + country, xaxis_title="year", yaxis_title=feature)
     fig.write_image("graph.png", format="png", engine="kaleido")
     
-    return send_file("graph.png", mimetype='image/png')
+    return send_file("graph.png", mimetype='image/png')"""
+    return jsonify({"feature":feature_column, "years":year_column}, mimetype="application/json")
 
 if __name__=="__main__":
     app.run(debug=True)
